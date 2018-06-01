@@ -33,6 +33,15 @@ class ValidationTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Validator::isIban($no_iban));
     }
 
+    public function testValidateIbanWithDots()
+    {
+        $iban = 'BE68 5390 0754 7034';
+        $this->assertTrue(Validator::isIban($iban));
+
+        $iban = 'BE68.5390.0754.7034';
+        $this->assertTrue(Validator::isIban($iban));
+    }
+
     public function testValidateBic()
     {
         $bic = 'PBNKDEFF';

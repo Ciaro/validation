@@ -77,6 +77,9 @@ class Validator
      */
     public static function isIban($value)
     {
+        // Support IBAN values with dots in it.
+        $value = str_replace('.', '', $value);
+
         // build replacement arrays
         $iban_replace_chars = range('A', 'Z');
         foreach (range(10, 35) as $tempvalue) {
